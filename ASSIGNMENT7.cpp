@@ -16,37 +16,33 @@ void printVector(const vector<T>& arr, const string& title) {
     cout << "]" << endl;
 }
 
-// =================================================================
-// PROBLEM 1: STANDARD SORTING TECHNIQUES
-// =================================================================
 
-// 1a. Selection Sort (O(n^2))
+
 void selectionSort(vector<int>& arr) {
     int n = arr.size();
     for (int i = 0; i < n - 1; ++i) {
-        // Find the minimum element in the unsorted part
+        
         int min_idx = i;
         for (int j = i + 1; j < n; ++j) {
             if (arr[j] < arr[min_idx]) {
                 min_idx = j;
             }
         }
-        // Swap the found minimum element with the first element of the unsorted part
+        
         if (min_idx != i) {
             swap(arr[i], arr[min_idx]);
         }
     }
 }
 
-// 1b. Insertion Sort (O(n^2) average/worst, O(n) best)
+
 void insertionSort(vector<int>& arr) {
     int n = arr.size();
     for (int i = 1; i < n; ++i) {
         int key = arr[i];
         int j = i - 1;
 
-        // Move elements of arr[0..i-1], that are greater than key, 
-        // to one position ahead of their current position
+        
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
             j = j - 1;
@@ -55,7 +51,7 @@ void insertionSort(vector<int>& arr) {
     }
 }
 
-// 1c. Bubble Sort (O(n^2))
+
 void bubbleSort(vector<int>& arr) {
     int n = arr.size();
     bool swapped;
@@ -67,26 +63,26 @@ void bubbleSort(vector<int>& arr) {
                 swapped = true;
             }
         }
-        if (!swapped) break; // Optimization
+        if (!swapped) break; 
     }
 }
 
-// 1d. Merge Sort (O(n log n)) - Merge function
+
 void merge(vector<int>& arr, int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
 
-    // Create temporary arrays
+   
     vector<int> L(n1), R(n2);
 
     // Copy data to temp arrays L[] and R[]
     for (int i = 0; i < n1; i++) L[i] = arr[l + i];
     for (int j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
 
-    // Merge the temp arrays back into arr[l..r]
-    int i = 0; // Initial index of first subarray
-    int j = 0; // Initial index of second subarray
-    int k = l; // Initial index of merged subarray
+   
+    int i = 0; 
+    int j = 0; 
+    int k = l; 
 
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
